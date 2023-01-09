@@ -72,7 +72,7 @@ Result.outcome()
 
 # Playing the game again
 def play_again():
-    new_game = input("Would you like to play again? y/n")
+    new_game = input("Would you like to play again? y/n").lower()
     while True:
         if new_game not in ["y", "n"]:
             print("Invalid input")
