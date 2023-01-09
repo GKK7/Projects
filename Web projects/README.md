@@ -4,3 +4,5 @@ Server status uses the socket module to check wether a server is working.
 
 Wikipedia uses the wikipedia module to provide a short summary on a selected topic.
 
+Url shortener requires the pyshorteners module to run.
+
