@@ -6,6 +6,7 @@ class Roulette:
     def __init__(self):
         self.numlist = []
         print("Welcome to Roulette, pick numbers and place bets")
+        # Ask for how many numbers (up to 36) the player would like to bet on
         while True:
             try:
                 self.numbers = int(input("How many numbers would you like to bet on?\n"))
@@ -17,6 +18,7 @@ class Roulette:
             else:
                 break
         for x in range(0, self.numbers):
+            # Ask for all numbers (up to 36) the player would like to bet on 
             while True:
                 try:
                     self.s2 = int(input("Pick a number from 0 to 36: "))
@@ -49,6 +51,7 @@ class Roulette:
                 self.stack = self.stack - self.bet
                 break
 
+    # Spinning the wheel
     def spin_roulette(self):
         self.spin = int(randint(0, 36))
         print(f"The roulette spins and lands on: {self.spin}")
