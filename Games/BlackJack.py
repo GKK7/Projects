@@ -92,6 +92,7 @@ def take_bet(chips):
             else:
                 break
 
+# Hit or stand options
 
 def hit(deck, hand):
     hand.add_card(deck.deal())
