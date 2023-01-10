@@ -1,16 +1,22 @@
 # Importing the required english-words module that will pick random words
+
 from english_words import english_words_set
 import random
+
 # Ignoring DeprecationWarning that might occur depending on python version
+
 import warnings
 
 warnings.simplefilter(action='ignore', category=DeprecationWarning)
+
 # Randomizing the word
+
 randword = random.sample([i for i in english_words_set if len(i) < 8], 1)
 final_word = "".join(randword).lower().strip()
 
 
 # Guessing the word
+
 def guess_word():
     print(f"Welcome to Hangman. Try to guess the 8 or lower letter word. \nThis one has {len(final_word)} letters")
     letters_guessed = ""
@@ -49,6 +55,7 @@ guess_word()
 
 
 # Playing the game again
+
 def play_again():
     play = input("Want to play Hangman again? y/n \n")
     while True:
