@@ -33,13 +33,12 @@ def play_game():
             spin_result = spin()
             print(f"The spin result is: {spin_result}")
             if check_win(spin_result):
-                print("You won!")
                 chips += bet
+                print(f"You won! You have {chips}")
+                break
             else:
-                print("You lost")
                 chips -= bet
-            if chips == 0:
-                print("You're out of chips")
+                print(f"You lost! You have {chips}")
                 break
         except ValueError:
             print("Invalid input")
@@ -57,7 +56,7 @@ def play_again():
             play = input("Want to play Slots again? y/n \n")
             continue
         elif "y" in play:
-            guess_word()
+            play_game()
             play_again()
             break
         else:
