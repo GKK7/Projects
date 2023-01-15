@@ -29,10 +29,10 @@ for tr in trs[:10]:
     fixed_name = name.p.string
     fixed_prices = price.a.string
     mcap, sup = tr.contents[8:10]
-    fixed_mcap = mcap.span.string
+    fixed_mcap = mcap.a.string
     fixed_sup = sup.p.string
-    vol = tr.contents[4]
-    fixed_vol = vol.p.string
+    vol = tr.contents[7]
+    fixed_vol = vol.span.string
 
     names.append(fixed_name)
     current_price.append(fixed_prices)
@@ -41,14 +41,14 @@ for tr in trs[:10]:
     volume.append(fixed_vol)
 
 # zip the extracted data together
-final = (list(zip(names, current_price, volume, mkap, supply)))
+final = (list(zip(names, current_price, mkap, volume, supply)))
 
 # get the time of document creation
 tm = datetime.datetime.now()
 date_time = tm.strftime("%m/%d/%Y, %H:%M:%S")
 stamp = f"Data generated at: {date_time}"
 
-df = pd.DataFrame(final, columns=["Name", "Price", "Volume", "Market Cap", "Supply"])
+df = pd.DataFrame(final, columns=["Name", "Price", "Market Cap", "Volume", "Supply"])
 
 # write the data in the workbook
 df.to_excel(writer, sheet_name="Crypto Data", index=False)
