@@ -2,24 +2,35 @@ import pandas as pd
 from sklearn.ensemble import IsolationForest
 import openpyxl
 import xlsxwriter
-from pprint import pprint
 
-df = pd.read_excel("Sales data.xlsx")
+
+df = pd.read_excel("Real Estate.xlsx")
 df= df.drop([113])
 
 
-data = df[["Общо вписвания"]]
+def anomaly_model():
+    anom = pd.read_excel("Real estate.xlsx")
+    anom = anom.drop([113])
 
-model = IsolationForest(contamination="auto")
+    # Use 2 variables - total registrations and foreclosures to identify the anomalies in the list of cities
+    data = anom[["Общо вписвания", "Възбрани"]]
 
-model.fit(data)
+    # Create an instance of the IsolationForest anomaly detection model
+    model = IsolationForest(contamination="auto")
 
-anomalies = model.predict(data)
+    # Fit the data into the model
+    model.fit(data)
 
-pprint(df[anomalies == -1])
+    # predict() anomalies
+    anomalies = model.predict(data)
 
-# dtt=pd.DataFrame(anomalies)
-# dtt.to_excel("Sales anomalies results.xlsx")
+    # display only the anomalies
+    print(anom[anomalies == -1])
+
+    print("The model displays the cities identified as anomalies according to the predefined variables")
+
+
+anomaly_model()
 
 
 
