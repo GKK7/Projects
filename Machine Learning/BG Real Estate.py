@@ -1,15 +1,6 @@
-print("""Goal: analyze the real estate market in Bulgaria based on data from Q4 2022. 
-Employ different methods and compare results.
-The base data is from the The National Agency of Public Registry:
-https://www.registryagency.bg/bg/registri/imoten-registar/statistika/""")
-
 # Import the required modules
 import tabula
 import pandas as pd
-from sklearn.ensemble import IsolationForest
-import openpyxl
-import xlsxwriter
-import time
 
 # Read pdf into DataFrame
 df_list = tabula.read_pdf('Real estate sales.pdf', pages=1)
@@ -20,37 +11,56 @@ for df in (df_list):
 # Export data to excel without the headers
 dft = pd.read_excel("Real estate.xlsx", header=None)
 
-# Remove the first two lines as they are leftover text from the pdf file
+# Remove the first two lines as they are leftover text from the pdf file, formatting table
 dft = dft.drop([0, 1])
-
-# Final formatting of the table
 dft.columns = range(dft.shape[1])
 dft.to_excel("Real estate.xlsx", index=False, header=False)
 
-time.sleep(2)
+df = pd.read_excel('Real Estate.xlsx')
+
+# Write the dataframe to a new excel file
+df.to_excel('Real Estate.xlsx', index=False)
 
 
-def anomaly_model():
-    anom = pd.read_excel("Real estate.xlsx")
-    anom = anom.drop([113])
+class RunML:
+    def __init__(self):
+        print("""Utilize different machine learning methods to analyze and make predictions on the Real Estate market. 
+The base data is from the The National Agency of Public Registry Q4 2022:
+https://www.registryagency.bg/bg/registri/imoten-registar/statistika/""")
 
-    # Use 2 variables - total registrations and foreclosures to identify the anomalies in the list of cities
-    data = anom[["Общо вписвания", "Възбрани"]]
+        print("Select type of method:\n"
+              "1: Linear Regression\n"
+              "2: Anomaly\n"
+              "3: KMeans cluster\n"
+              "4: other\n"
+              "5: Quit")
 
-    # Create an instance of the IsolationForest anomaly detection model
-    model = IsolationForest(contamination="auto")
+    choices = {1: "Linear Regression", 2: "Anomaly", 3: "KMeans cluster", 4: "other", 5: "Quit"}
 
-    # Fit the data into the model
-    model.fit(data)
+    def run(self):
+        while True:
+            try:
+                choice = int(input("Select the ML type or 5 to quit \n"))
+                if choice not in self.choices.keys():
+                    print("Unavailable option")
+                    continue
+            except ValueError:
+                print("Integers 1-5 only")
 
-    # predict() anomalies
-    anomalies = model.predict(data)
+            else:
+                print(f"You've chosen {self.choices[choice]}")
+                if choice == 1:
+                    import Regression
+                if choice == 2:
+                    import Anomaly
+                if choice == 3:
+                    import KM_cluster
+                if choice == 4:
+                    pass
+                if choice == 5:
+                    quit()
+                    break
 
-    # display only the anomalies
-    print(anom[anomalies == -1])
 
-    print("The model displays the cities identified as anomalies according to the predefined variables")
-
-
-anomaly_model()
-
+run_ml = RunML()
+run_ml.run()
