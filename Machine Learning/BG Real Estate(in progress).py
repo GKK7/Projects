@@ -63,4 +63,5 @@ https://www.registryagency.bg/bg/registri/imoten-registar/statistika/""")
 
 
 run_ml = RunML()
+
 run_ml.run()
