@@ -1,5 +1,6 @@
 # Import the required modules
-import tabula
+# tabula requires java to run
+import tabula 
 import pandas as pd
 
 # Read pdf into DataFrame
