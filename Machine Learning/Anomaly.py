@@ -3,10 +3,7 @@ from sklearn.ensemble import IsolationForest
 import openpyxl
 import xlsxwriter
 
-
-df = pd.read_excel("Real Estate.xlsx")
-df= df.drop([113])
-
+# Read the excel file and remove the last row, which is total sum of elements, as it is not a valid item.
 
 def anomaly_model():
     anom = pd.read_excel("Real estate.xlsx")
