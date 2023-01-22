@@ -2,3 +2,4 @@ BG Real estate is the main file that converts, preprocesses and formats data dow
 
 It then prompts the user to select the type of machine learning methods to apply to the data.
 
+Used modules: tabula, pandas, numpy, sklearn, matplotlib
