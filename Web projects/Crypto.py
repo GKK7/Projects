@@ -23,7 +23,7 @@ mkap = []
 supply = []
 volume = []
 
-# extract the data
+# extract the data from the source
 for tr in trs[:10]:
     name, price = tr.contents[2:4]
     fixed_name = name.p.string
