@@ -33,7 +33,7 @@ https://www.registryagency.bg/bg/registri/imoten-registar/statistika/""")
               "1: Linear Regression\n"
               "2: Anomaly\n"
               "3: KMeans cluster\n"
-              "4: other\n"
+              "4: other\n" #not finished
               "5: Quit")
 
     choices = {1: "Linear Regression", 2: "Anomaly", 3: "KMeans cluster", 4: "other", 5: "Quit"}
@@ -57,7 +57,7 @@ https://www.registryagency.bg/bg/registri/imoten-registar/statistika/""")
                 if choice == 3:
                     import KM_cluster
                 if choice == 4:
-                    pass
+                    pass #not finished
                 if choice == 5:
                     quit()
                     break
