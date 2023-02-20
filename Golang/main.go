@@ -1,6 +1,6 @@
 package main
 
-//import formatting package
+//import packages
 import (
 	"fmt"
 	"sync"
@@ -26,7 +26,6 @@ type UserData struct {
 var wg = sync.WaitGroup{}
 
 // everything goes in the function
-// Println - print newline
 func main() {
 	//go implicitly figures out the datatype based on data - string/integer
 	//%T - type of data
@@ -41,8 +40,6 @@ func main() {
 
 	for {
 
-		// isValidCity := city == "Sofia" || city == "Varna"
-		// !isValidCity
 		firstName, familyname, email, userTickets := getuserinput()
 		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, familyname, email, uint(userTickets))
 		// if there are not sufficient available tickets then break out of the loop immediately
@@ -122,7 +119,6 @@ func bookTicket(userTickets uint, firstName string, familyname string, email str
 		email:           email,
 		NumberofTickets: userTickets,
 	}
-	//make bookings a type of map
 
 	bookings = append(bookings, userData)
 	fmt.Printf("List of bookings is %v\n", bookings)
