@@ -25,19 +25,11 @@ type UserData struct {
 // waitgroup to execute the current thread
 var wg = sync.WaitGroup{}
 
-// everything goes in the function
-// Println - print newline
 func main() {
 	//go implicitly figures out the datatype based on data - string/integer
 	//%T - type of data
 
 	greetUsers()
-
-	// either with an empty array {} or filled up with values
-	// fixed size array in this case 50
-
-	//if go cant figure out the data type, it needs to be told
-	//go identifies problems as they are written
 
 	for {
 
