@@ -12,7 +12,6 @@ const conferenceTickets uint = 50
 var conferenceName = "GO Conference"
 var remainingTickets uint = 50
 
-// make bookings a dynamic map by including 0 as it will expand
 var bookings = make([]UserData, 0)
 
 type UserData struct {
@@ -25,8 +24,6 @@ type UserData struct {
 // waitgroup to execute the current thread
 var wg = sync.WaitGroup{}
 
-// everything goes in the function
-// Println - print newline
 func main() {
 	//go implicitly figures out the datatype based on data - string/integer
 	//%T - type of data
