@@ -56,7 +56,7 @@ func bookTicket(userTickets uint, firstName string, familyname string, email str
 		email:           email,
 		NumberofTickets: userTickets,
 	}
-	//make bookings a type of map
+	//make bookings a map
 
 	bookings = append(bookings, userData)
 	fmt.Printf("List of bookings is %v\n", bookings)
