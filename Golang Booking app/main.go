@@ -30,8 +30,6 @@ func main() {
 
 	for {
 
-		// isValidCity := city == "Sofia" || city == "Varna"
-		// !isValidCity
 		firstName, familyname, email, userTickets := getuserinput()
 		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, familyname, email, uint(userTickets))
 		// if there are not sufficient available tickets then break out of the loop immediately
