@@ -4,7 +4,7 @@ import pyttsx3
 import pyaudio
 
 # Initialize OpenAI API. Use my API key or your own
-openai.api_key = "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"
+openai.api_key = "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"
 # Initialize the text to speech engine
 engine = pyttsx3.init()
 
