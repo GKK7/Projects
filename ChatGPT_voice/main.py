@@ -49,7 +49,7 @@ def main():
                 if transcription.lower() == "hello":
                     # Record audio
                     filename = "input.wav"
-                    print("Say your question")
+                    print("Ask your question")
                     with sr.Microphone() as source:
                         recognizer = sr.Recognizer()
                         source.pause_threshold = 1
