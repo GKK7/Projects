@@ -3,13 +3,13 @@ import speech_recognition as sr
 import pyttsx3
 
 
-# Initialize OpenAI API
+# Initialize OpenAI API. Insert your API key that you can get for free at platform.openai
 openai.api_key = "YOUR_API_KEY_HERE"
-# Initialize the text to speech engine
+# Initialize the text to speech engine with the python ttsx3 library
 engine = pyttsx3.init()
 engine.setProperty('voice', 'en-US')
 
-
+# Function transcribes user audio to text and records it
 def transcribe_audio_to_text(filename):
     recognizer = sr.Recognizer()
     with sr.AudioFile(filename) as source:
@@ -19,7 +19,7 @@ def transcribe_audio_to_text(filename):
     except:
         print("Unknown error occurred")
 
-
+# Basic settings fro generating the response
 def generate_response(prompt):
     response = openai.Completion.create(
         engine="text-davinci-002",
@@ -31,22 +31,22 @@ def generate_response(prompt):
     )
     return response["choices"][0]["text"]
 
-
+# Returning the response
 def speak_text(text):
     engine.say(text)
     engine.runAndWait()
 
-
+# Main function 
 def main():
     while True:
-        # Wait for user to say "yo"
-        print("Say 'Yo' to start recording your question or 'Goodbye' to exit the program.")
+        # Wait for user to say "hello"
+        print("Say 'Hello' to start recording your question or 'Goodbye' to exit the program.")
         with sr.Microphone() as source:
             recognizer = sr.Recognizer()
             audio = recognizer.listen(source)
             try:
                 transcription = recognizer.recognize_google(audio)
-                if transcription.lower() == "yo":
+                if transcription.lower() == "hello":
                     # Record audio
                     filename = "input.wav"
                     print("Say your question")
@@ -57,7 +57,7 @@ def main():
                         with open(filename, "wb") as f:
                             f.write(audio.get_wav_data())
 
-                    # Transcript audio to text
+                    # Transcribe audio input to text
                     text = transcribe_audio_to_text(filename)
                     if text:
                         print(f"You said: {text}")
@@ -66,8 +66,9 @@ def main():
                         response = generate_response(text)
                         print(f"Chat GPT-3 says: {response}")
 
-                        # Read response using GPT-3
+                        # TTS reads response using GPT3
                         speak_text(response)
+                # Ending the transcription by saying goodbye
                 elif transcription.lower() == "goodbye":
                     # Terminate the program
                     print("Exiting the program. Goodbye!")
