@@ -19,7 +19,7 @@ def transcribe_audio_to_text(filename):
     except:
         print("Unknown error occurred")
 
-# Basic settings fro generating the response
+# Basic settings for generating the response
 def generate_response(prompt):
     response = openai.Completion.create(
         engine="text-davinci-002",
@@ -74,7 +74,7 @@ def main():
                     print("Exiting the program. Goodbye!")
                     return
             except Exception as e:
-                print("An error occurred: {}".format(e))
+                print(f"An error occurred: {e}")
 
 
 if __name__ == "__main__":
