@@ -3,8 +3,8 @@ import speech_recognition as sr
 import pyttsx3
 import pyaudio
 
-# Initialize OpenAI API. Use my API key or your own
-openai.api_key = "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"
+# Initialize OpenAI API. Insert your API key
+openai.api_key = ""
 # Initialize the text to speech engine
 engine = pyttsx3.init()
 
