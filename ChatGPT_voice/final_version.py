@@ -1,3 +1,4 @@
+# Import the required modules
 import openai
 import speech_recognition as sr
 import pyttsx3
@@ -46,6 +47,7 @@ def main():
     mode = "a"  # Append mode
     with open(filename, mode=mode, encoding='utf-8') as file:
         while True:
+            
             # Wait for user to say "hello"
             print("Say 'Hello' to start recording your question or 'Goodbye' to exit the program.")
             with sr.Microphone() as source:
@@ -54,6 +56,7 @@ def main():
                 try:
                     transcription = recognizer.recognize_google(audio)
                     if transcription.lower() == "hello":
+                        
                         # Record audio
                         filename = "input.wav"
                         print("Ask your question")
@@ -80,7 +83,7 @@ def main():
                             file.write(f"You said: {text}\n")
                             file.write(f"Chat GPT-3 says: {response}\n\n")
 
-                            # Ending the transcription by saying goodbye
+                    # Ending the transcription by saying goodbye
                     elif transcription.lower() == "goodbye":
                         # Terminate the program
                         print("Exiting the program. Goodbye!")
